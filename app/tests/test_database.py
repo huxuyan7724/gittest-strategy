@@ -30,5 +30,9 @@ class DatabaseTests(unittest.TestCase):
         """Test that the number of unique items returns the correct value"""
         self.assertEquals(self.db_mod.get_number_unique_items(), 13935)
 
+    def test_get_top_prescribed_item_percentage(self):
+        """This is to test the calculated percentage of the most prescribed items"""
+        self.assertEquals(self.db_mod.get_top_prescribed_item_percentage(), 2.75)
+
 if __name__ == "__main__":
     unittest.main()
