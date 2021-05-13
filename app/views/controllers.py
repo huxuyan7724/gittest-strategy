@@ -42,7 +42,7 @@ def home():
 
 def generate_data_for_tiles():
     """Generate the data for the four home page titles."""
-    return [db_mod.get_total_number_items(), get_top_prescribed_item_percentage(), db_mod.get_number_unique_items()]
+    return [db_mod.get_total_number_items(), db_mod.get_number_unique_items()]
 
 def generate_barchart_data():
     """Generate the data needed to populate the barchart."""
