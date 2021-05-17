@@ -300,24 +300,26 @@
                 <p>Sex of patient:</p>
                 <div>
                   <label class="radio-inline">
-                    <input type="radio" name="sex" value="m"> Male
+                    <input type="radio" id="m-sex" name="patients-sex" value="1.23"> Male
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="sex" value="f"> Female
+                    <input type="radio" id="f-sex" name="patients-sex" value="1.04"> Female
                   </label>
                   <p>Age of patient (years):</p>
-                  <input type="number" min="1" max="120" name="patients-age"/>
+                  <input id="p-age" type="number" min="1" max="120" name="patients-age"/>
                   <br/><br/>
                   <p>Weight of patient (kg):</p>
-                  <input type="number" min="1" max="120" name="patients-weight"/>
+                  <input id="p-weight" type="number" min="1" max="120" name="patients-weight"/>
                   <br/><br/>
                   <p>Serum creatinine (micromol/L):</p>
-                  <input type="number" min="1" max="120" name="patients-serum"/>
-                  <br/>
+                  <input id="p-serum" type="number" min="1" max="120" name="patients-serum"/>
+                  <br/><br/>
+                  <p>Creatinine Clearance (ml/min):</p>
+                    <span id="p-clearance"></span>
                 </div>
                 <br/>
                 <hr/>
-                <button type="button" class="btn btn-primary">Calculate</button>
+                <button type="button" class="btn btn-primary" onclick="calculateClearance();">Calculate</button>
                 <button type="button" class="btn btn-danger" onclick="popup.hideCeatCalcFormPopup();">Close</button>
               </div>
             </div>
