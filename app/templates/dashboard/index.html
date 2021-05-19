@@ -18,6 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="{{ url_for('static', filename='css/sb-admin-2.min.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/abx.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/stylee.css') }}" rel="stylesheet">
   <script src="{{ url_for('static', filename='vendor/chart.js/Chart.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   <script src="{{ url_for('static', filename='js/barchart.js') }}"></script>
@@ -329,10 +330,53 @@
           <div id="about-box">
             <div class="card">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">About the prescribing dashboard</h6>
+                <h6 class="m-0 font-weight-bold text-primary">About the prescribing dashboard.</h6>
               </div>
               <div class="card-body">
-                <p>?</p>
+                <h5>Welcome to your Prescribing Dashboard.</h5>
+                <p>The purpose of this dashboard is to present the most <br>
+                 up to date practice level prescribing data, collected by <br>
+                NHS Digital. The data content relates to prescribing data, <br>
+                as well as medications. The data is presented for your use. <br>
+                Use the dashboard to investigate any population prescribing <br>
+                questions and maximise dashboard functionality by calculating<br>
+                  creatinine clearance for your patients.</p>
+                <hr>
+                <h5>Contact Details</h5>
+                <p> If you find any issues with the dashboard or have any questions <br>
+                do feel free to contact any of the team behind the dashboard. <br></p>
+                <div>
+                  <table id="contact-table">
+                  <thead>
+                  <tr>
+                    <td>Name</td>
+                    <td>Email Contact</td>
+                    </tr>
+                  </thead>
+                    <tbody>
+                  <tr>
+                    <td>Luca Sivori</td>
+                    <td>luca.sivori@postgrad.manchester.ac.uk</td>
+                  </tr>
+                  <tr>
+                    <td>Xuyan Hu</td>
+                    <td>xuyan.hu@postgrad.manchester.ac.uk</td>
+                  </tr>
+                  <tr>
+                    <td>Allayah Moore</td>
+                    <td>allayah.moore@postgrad.manchester.ac.uk</td>
+                  </tr>
+                  <tr>
+                    <td>Yiyang Ding</td>
+                    <td>yiyang.ding-2@postgrad.manchester.ac.uk</td>
+                  </tr>
+                  <tr>
+                    <td>Xiatian Fan</td>
+                    <td>xiatian.fan@postgrad.manchester.ac.uk</td>
+                  </tr>
+                    </tbody>
+                </table>
+                </div>
                 <br/>
                 <hr/>
                 <button type="button" class="btn btn-danger" onclick="popup.hideAboutPopup();">Close</button>
