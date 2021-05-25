@@ -26,5 +26,9 @@ class DatabaseTests(unittest.TestCase):
         """Test that the total number of itmems returns the correct value."""
         self.assertEquals(self.db_mod.get_total_number_items(), 8218165)
 
+    def test_get_number_unique_items(self):
+        """Test that the number of unique items returns the correct value"""
+        self.assertEquals(self.db_mod.get_number_unique_items(), 13935)
+
 if __name__ == "__main__":
     unittest.main()
