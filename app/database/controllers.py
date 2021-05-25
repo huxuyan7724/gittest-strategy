@@ -21,6 +21,10 @@ class Database:
         """Return the total number of prescribed items."""
         return int(db.session.query(func.sum(PrescribingData.items).label('total_items')).first()[0])
 
+    def get_number_unique_items(self):
+        """Return the total number of unique items."""
+        return db.session.query(func.count(PrescribingData.BNF_code.distinct()).label('unique_items')).first()[0]
+
     def get_prescribed_items_per_pct(self):
         """Return the total items per PCT."""
         return db.session.query(func.sum(PrescribingData.items).label('item_sum')).group_by(PrescribingData.PCT).all()

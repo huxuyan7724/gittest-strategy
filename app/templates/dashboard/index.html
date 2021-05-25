@@ -184,7 +184,8 @@
                         </div>
                         <div class="col">
                           <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuemin="0"
+                                 aria-valuemax="100"></div>
                           </div>
                         </div>
                       </div>
@@ -197,14 +198,15 @@
               </div>
             </div>
 
-            <!-- Pending Requests Card Example -->
+            <!-- Number of Unique Items -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">NUMBER OF UNIQUE ITEMS:</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">NUMBER OF UNIQUE ITEMS:
+                      </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ tile_data[1] }}</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-fingerprint fa-2x text-gray-300"></i>
@@ -214,6 +216,8 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="container-fluid">
 
           <!-- Content Row -->
           <div class="row">
@@ -228,54 +232,55 @@
               </div>
             </div>
 
-          <!-- Content Row -->
-          <div class="row last-row">
+            <!-- Content Row -->
+            <div class="row last-row">
 
-            <!-- Content Column -->
-            <div class="col-xl-6">
+              <!-- Content Column -->
+              <div class="col-xl-6">
 
-              <!-- Infection treatment drugs -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Infection treatment drug as % of all infection treatments</h6>
+                <!-- Infection treatment drugs -->
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Infection treatment drug as % of all infection
+                      treatments</h6>
+                  </div>
+                  <div class="card-body">
+
+                  </div>
                 </div>
-                <div class="card-body">
 
-                </div>
               </div>
-
-            </div>
-            <div class="col-xl-6">
-              <!-- Show the BNF data for slected PCT -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">BNF data per PCT</h6>
-                </div>
-                <div class="card-body">
+              <div class="col-xl-6">
+                <!-- Show the BNF data for slected PCT -->
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">BNF data per PCT</h6>
+                  </div>
+                  <div class="card-body">
                     <form method='POST' action="{{ url_for('dashboard.home') }}">
                       <select class="custom-select" id="input-group-select" name="pct-option">
                         {% for item in pct_list %}
                         <option name="option-list" value="{{ item }}">{{ item }}</option>
                         {% endfor %}
                       </select>
-                      <input type="submit" value="Update" class="btn btn-outline-secondary" />
+                      <input type="submit" value="Update" class="btn btn-outline-secondary"/>
                     </form>
-                    <hr />
+                    <hr/>
                     <table class="table">
-                    <thead>
+                      <thead>
                       <td>Practice</td>
                       <td>BNF code</td>
                       <td>BNF name</td>
                       <td>Items</td>
-                    </thead>
+                      </thead>
                       <tbody>
                       {% for row in pct_data %}
-                        <tr>
-                          <td>{{ row.practice }}</td>
-                          <td>{{ row.BNF_code }}</td>
-                          <td>{{ row.BNF_name }}</td>
-                          <td>{{ row.items }}</td>
-                        </tr>
+                      <tr>
+                        <td>{{ row.practice }}</td>
+                        <td>{{ row.BNF_code }}</td>
+                        <td>{{ row.BNF_name }}</td>
+                        <td>{{ row.items }}</td>
+                      </tr>
                       {% endfor %}
                       </tbody>
                     </table>
@@ -288,48 +293,93 @@
           <!-- Creatinine clearance calculator -->
           <div id="creat-calc">
             <div class="card">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Creatinine clearance calculator</h6>
-                </div>
-                <div class="card-body">
-                  <p>Sex of patient:</p>
-                  <div>
-                    <label class="radio-inline">
-                      <input type="radio" name="sex" value="m"> Male
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" name="sex" value="f"> Female
-                    </label>
-                    <p>Age of patient (years):</p>
-                    <input type="number" min="1" max="120" name="patients-age" />
-                    <br /><br />
-                    <p>Weight of patient (kg):</p>
-                    <input type="number" min="1" max="120" name="patients-weight" />
-                    <br /><br />
-                    <p>Serum creatinine (micromol/L):</p>
-                    <input type="number" min="1" max="120" name="patients-serum" />
-                    <br />
-                  </div>
-                  <br />
-                  <hr />
-                  <button type="button" class="btn btn-primary">Calculate</button>
-                  <button type="button" class="btn btn-danger" onclick="popup.hideCeatCalcFormPopup();">Close</button>
-                </div>
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Creatinine clearance calculator</h6>
               </div>
+              <div class="card-body">
+                <p>Sex of patient:</p>
+                <div>
+                  <label class="radio-inline">
+                    <input type="radio" id="m-sex" name="patients-sex" value="1.23"> Male
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" id="f-sex" name="patients-sex" value="1.04"> Female
+                  </label>
+                  <p>Age of patient (years):</p>
+                  <input id="p-age" type="number" min="1" max="120" name="patients-age"/>
+                  <br/><br/>
+                  <p>Weight of patient (kg):</p>
+                  <input id="p-weight" type="number" min="1" max="120" name="patients-weight"/>
+                  <br/><br/>
+                  <p>Serum creatinine (micromol/L):</p>
+                  <input id="p-serum" type="number" min="1" max="120" name="patients-serum"/>
+                  <br/><br/>
+                  <p>Creatinine Clearance (ml/min):</p>
+                    <span id="p-clearance"></span>
+                </div>
+                <br/>
+                <hr/>
+                <button type="button" class="btn btn-primary" onclick="calculateClearance();">Calculate</button>
+                <button type="button" class="btn btn-danger" onclick="popup.hideCeatCalcFormPopup();">Close</button>
+              </div>
+            </div>
           </div>
 
           <!-- About popup -->
           <div id="about-box">
             <div class="card">
               <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">About the prescribing dashboard</h6>
+                <h6 class="m-0 font-weight-bold text-primary">About the prescribing dashboard.</h6>
+              </div>
+              <div class="card-body">
+                <h5>Welcome to your Prescribing Dashboard.</h5>
+                <p>The purpose of this dashboard is to present the most <br>
+                 up to date practice level prescribing data, collected by <br>
+                NHS Digital. The data content relates to prescribing data, <br>
+                as well as medications. The data is presented for your use. <br>
+                Use the dashboard to investigate any population prescribing <br>
+                questions and maximise dashboard functionality by calculating<br>
+                  creatinine clearance for your patients.</p>
+                <hr>
+                <h5>Contact Details</h5>
+                <p> If you find any issues with the dashboard or have any questions <br>
+                do feel free to contact any of the team behind the dashboard. <br></p>
+                <div>
+                  <table id="contact-table">
+                  <thead>
+                  <tr>
+                    <td>Name</td>
+                    <td>Email Contact</td>
+                    </tr>
+                  </thead>
+                    <tbody>
+                  <tr>
+                    <td>Luca Sivori</td>
+                    <td>luca.sivori@postgrad.manchester.ac.uk</td>
+                  </tr>
+                  <tr>
+                    <td>Xuyan Hu</td>
+                    <td>xuyan.hu@postgrad.manchester.ac.uk</td>
+                  </tr>
+                  <tr>
+                    <td>Allayah Moore</td>
+                    <td>allayah.moore@postgrad.manchester.ac.uk</td>
+                  </tr>
+                  <tr>
+                    <td>Yiyang Ding</td>
+                    <td>yiyang.ding-2@postgrad.manchester.ac.uk</td>
+                  </tr>
+                  <tr>
+                    <td>Xiatian Fan</td>
+                    <td>xiatian.fan@postgrad.manchester.ac.uk</td>
+                  </tr>
+                    </tbody>
+                </table>
                 </div>
-                <div class="card-body">
-                  <p>?</p>
-                  <br />
-                  <hr />
-                   <button type="button" class="btn btn-danger" onclick="popup.hideAboutPopup();">Close</button>
-                </div>
+                <br/>
+                <hr/>
+                <button type="button" class="btn btn-danger" onclick="popup.hideAboutPopup();">Close</button>
+              </div>
             </div>
           </div>
         </div>

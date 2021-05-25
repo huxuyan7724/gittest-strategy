@@ -66,3 +66,14 @@ function Popup()
 
     return popup;
 }
+
+//calculate creatinine clearance
+function calculateClearance()
+{
+   var pSex = document.querySelector('input[name="patients-sex"]:checked').value;
+   var pAge = document.getElementById("p-age").value;
+   var pWeight = document.getElementById("p-weight").value;
+   var pSerum = document.getElementById("p-serum").value;
+   var cResult = Math.round(((140 - pAge) * pWeight * pSex) / pSerum)
+   document.getElementById("p-clearance").innerHTML = cResult
+}
