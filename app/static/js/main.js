@@ -9,10 +9,12 @@
 
 var popup = null;
 var barChart = null;
-
+var barChart2 = null
 // initialisation function
 function initializeMain()
 {
     popup = Popup();
     barChart = BarChart();
+    barChart2 = BarChart2();
+
 }

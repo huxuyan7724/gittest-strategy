@@ -21,7 +21,9 @@
   <script src="{{ url_for('static', filename='vendor/chart.js/Chart.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   <script src="{{ url_for('static', filename='js/barchart.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/barchart2.js') }}"></script>
   <script src="{{ url_for('static', filename='js/popup.js') }}"></script>
+
 
   <!-- Page script -->
   <script type=text/javascript>
@@ -30,7 +32,10 @@
         // Run JavaScript functions when page ready
         $(document).ready(function () {
             initializeMain();
+             // console.log({{pct|tojson}});
             barChart.drawChart({{pct|tojson}}, "bar-chart");
+            let barChart2_data = tool({{pct|tojson}})
+            barChart2.drawChart(barChart2_data, "bar-chart2");
         });
   </script>
 </head>
@@ -243,6 +248,9 @@
                   <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Infection treatment drug as % of all infection
                       treatments</h6>
+                         <div class="card-body">
+                          <canvas id="bar-chart2"</canvas>
+                         </div>
                   </div>
                   <div class="card-body">
 

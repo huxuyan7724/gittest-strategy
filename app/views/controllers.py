@@ -25,19 +25,22 @@ def home():
         # if selecting PCT for table, update based on user choice
         form = request.form
         selected_pct_data = db_mod.get_n_data_for_PCT(str(form['pct-option']), 5)
+
     else:
         # pick a default PCT to show
+
         selected_pct_data = db_mod.get_n_data_for_PCT(str(pcts[0]), 5)
+        selected_bnf_data = db_mod.get__all_data_for_BNFCODE()
+        # print(selected_bnf_data)
 
     # prepare data
     bar_data = generate_barchart_data()
     bar_values = bar_data[0]
     bar_labels = bar_data[1]
     title_data_items = generate_data_for_tiles()
-
     # render the HTML page passing in relevant data
     return render_template('dashboard/index.html', tile_data=title_data_items,
-                           pct={'data': bar_values, 'labels': bar_labels},
+                           pct={'data': bar_values, 'labels': bar_labels,'bnf':selected_bnf_data},
                            pct_list=pcts, pct_data=selected_pct_data)
 
 def generate_data_for_tiles():
