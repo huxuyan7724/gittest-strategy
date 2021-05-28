@@ -14,3 +14,5 @@ Current Dashboard Functionality:
   19/05/21 - About Information Box - changes in abx.css and index.html
 
   24/05/21 - Update the Infection Disease Drugs use information - add barchart2.js and database/controllers.py
+
+  28/05/21 - Added validation, units and clear button to calculator - changes in popup.js and index.html

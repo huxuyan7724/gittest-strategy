@@ -70,10 +70,54 @@ function Popup()
 //calculate creatinine clearance
 function calculateClearance()
 {
-   var pSex = document.querySelector('input[name="patients-sex"]:checked').value;
-   var pAge = document.getElementById("p-age").value;
-   var pWeight = document.getElementById("p-weight").value;
-   var pSerum = document.getElementById("p-serum").value;
-   var cResult = Math.round(((140 - pAge) * pWeight * pSex) / pSerum)
-   document.getElementById("p-clearance").innerHTML = cResult
+   //Validation for sex
+   var gender = document.querySelectorAll('input[name="patients-sex"]:checked');
+   if (!gender.length){
+       alert("Please select male or female.");
+       return false;
+   }
+
+   //Retrieve inputs
+   var pSex = document.querySelector('input[name="patients-sex"]:checked').value;   //retrieve sex
+   var pAge = document.getElementById("p-age").value;                              //retrieve age
+   var pWeight = document.getElementById("p-weight").value;                        //retrieve weight
+   var pSerum = document.getElementById("p-serum").value;                          //retrieve serum
+
+    //Validation for age
+   if (pAge == ""){
+       alert("Please enter a number for age.");
+       return false;
+   }
+   if (pAge < 1 || pAge > 120) {
+       alert("Please enter a valid number(1 - 120) for age.");
+       return false;
+   }
+   //Validation for weight
+   if (pWeight == "") {
+       alert("Please enter a number for weight.");
+       return false;
+   }
+   if (pWeight < 1 || pWeight > 400) {
+       alert("Please enter a valid number(1 - 400) for weight.");
+       return false;
+   }
+   //Validation for serum
+   if (pSerum == "") {
+       alert("Please enter a number for serum.");
+       return false;
+   }
+   if (pSerum < 1 || pSerum > 250) {
+       alert("Please enter a valid number(1 - 250) for serum.");
+       return false;
+   }
+
+    var cResult = ((140 - pAge) * pWeight * pSex) / pSerum                                   //Cockcroft-Gault Equation
+    var decimalResult = twoDecimals(cResult, 2)                                         //Rounded to two decimal places
+    document.getElementById("p-clearance").innerHTML = decimalResult+" ml/min"            //Creatinine Clearance returned
+}
+
+//function to return a number to a set decimal place - (value, number of decimal places)
+function twoDecimals(val, decimals){
+    val = parseFloat(val);
+    return val.toFixed(decimals);
 }

@@ -322,12 +322,20 @@
                   <p>Serum creatinine (micromol/L):</p>
                   <input id="p-serum" type="number" min="1" max="120" name="patients-serum"/>
                   <br/><br/>
-                  <p>Creatinine Clearance (ml/min):</p>
+                  <p>Creatinine Clearance:</p>
                     <span id="p-clearance"></span>
                 </div>
                 <br/>
                 <hr/>
                 <button type="button" class="btn btn-primary" onclick="calculateClearance();">Calculate</button>
+                <button type="button" class="btn btn-danger" onclick=
+                        "document.getElementById('p-age').value = '';
+                        document.getElementById('p-weight').value = '';
+                        document.getElementById('p-serum').value = '';
+                        document.getElementById('p-clearance').value = '';
+                        document.getElementById('m-sex').checked = false;
+                        document.getElementById('f-sex').checked = false"
+                >Clear</button>
                 <button type="button" class="btn btn-danger" onclick="popup.hideCeatCalcFormPopup();">Close</button>
               </div>
             </div>
