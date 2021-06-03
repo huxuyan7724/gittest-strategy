@@ -55,7 +55,7 @@
       <hr class="sidebar-divider my-0">
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <div class="nav-link" onclick="popup.showAboutPopup();">
+        <div id="about-button" class="nav-link" onclick="popup.showAboutPopup();">
           <i class="fas fa-info-circle"></i>
           <span>About</span></div>
       </li>
@@ -72,7 +72,7 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <div class="nav-link" onclick="popup.showCeatCalcFormPopup();">
+        <div id="creatinine clearance" class="nav-link" onclick="popup.showCeatCalcFormPopup();">
           <i class="fas fa-calculator"></i>
           <span>Creatinine clearance</span>
         </div>
@@ -327,7 +327,7 @@
                 </div>
                 <br/>
                 <hr/>
-                <button type="button" class="btn btn-primary" onclick="calculateClearance();">Calculate</button>
+                <button id="calculate-button" type="button" class="btn btn-primary" onclick="calculateClearance();">Calculate</button>
                 <button type="button" class="btn btn-danger" onclick=
                         "document.getElementById('p-age').value = '';
                         document.getElementById('p-weight').value = '';
@@ -336,7 +336,7 @@
                         document.getElementById('m-sex').checked = false;
                         document.getElementById('f-sex').checked = false"
                 >Clear</button>
-                <button type="button" class="btn btn-danger" onclick="popup.hideCeatCalcFormPopup();">Close</button>
+                <button id="cal-close-button" type="button" class="btn btn-danger" onclick="popup.hideCeatCalcFormPopup();">Close</button>
               </div>
             </div>
           </div>
@@ -394,7 +394,7 @@
                 </div>
                 <br/>
                 <hr/>
-                <button type="button" class="btn btn-danger" onclick="popup.hideAboutPopup();">Close</button>
+                <button id="about-close-button" type="button" class="btn btn-danger" onclick="popup.hideAboutPopup();">Close</button>
               </div>
             </div>
           </div>
