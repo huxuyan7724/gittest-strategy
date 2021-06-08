@@ -14,6 +14,7 @@ function BarChart()
     // function to draw barchart
     barChart.drawChart = function(pctData, elementId)
     {
+
         Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
         Chart.defaults.global.defaultFontColor = '#858796';
 
@@ -53,7 +54,7 @@ function BarChart()
                 ticks: {
                   min: 0,
                   maxTicksLimit: 10,
-                  padding: 10,
+                  padding: 10
                 },
                 gridLines: {
                   color: "rgb(234, 236, 244)",

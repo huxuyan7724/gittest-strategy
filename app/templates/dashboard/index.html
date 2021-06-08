@@ -21,7 +21,9 @@
   <script src="{{ url_for('static', filename='vendor/chart.js/Chart.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   <script src="{{ url_for('static', filename='js/barchart.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/barchart2.js') }}"></script>
   <script src="{{ url_for('static', filename='js/popup.js') }}"></script>
+
 
   <!-- Page script -->
   <script type=text/javascript>
@@ -30,7 +32,10 @@
         // Run JavaScript functions when page ready
         $(document).ready(function () {
             initializeMain();
+             // console.log({{pct|tojson}});
             barChart.drawChart({{pct|tojson}}, "bar-chart");
+            let barChart2_data = tool({{pct|tojson}})
+            barChart2.drawChart(barChart2_data, "bar-chart2");
         });
   </script>
 </head>
@@ -50,7 +55,7 @@
       <hr class="sidebar-divider my-0">
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <div class="nav-link" onclick="popup.showAboutPopup();">
+        <div id="about-button" class="nav-link" onclick="popup.showAboutPopup();">
           <i class="fas fa-info-circle"></i>
           <span>About</span></div>
       </li>
@@ -67,7 +72,7 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <div class="nav-link" onclick="popup.showCeatCalcFormPopup();">
+        <div id="creatinine clearance" class="nav-link" onclick="popup.showCeatCalcFormPopup();">
           <i class="fas fa-calculator"></i>
           <span>Creatinine clearance</span>
         </div>
@@ -243,6 +248,9 @@
                   <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Infection treatment drug as % of all infection
                       treatments</h6>
+                         <div class="card-body">
+                          <canvas id="bar-chart2"</canvas>
+                         </div>
                   </div>
                   <div class="card-body">
 
@@ -314,13 +322,21 @@
                   <p>Serum creatinine (micromol/L):</p>
                   <input id="p-serum" type="number" min="1" max="120" name="patients-serum"/>
                   <br/><br/>
-                  <p>Creatinine Clearance (ml/min):</p>
+                  <p>Creatinine Clearance:</p>
                     <span id="p-clearance"></span>
                 </div>
                 <br/>
                 <hr/>
-                <button type="button" class="btn btn-primary" onclick="calculateClearance();">Calculate</button>
-                <button type="button" class="btn btn-danger" onclick="popup.hideCeatCalcFormPopup();">Close</button>
+                <button id="calculate-button" type="button" class="btn btn-primary" onclick="calculateClearance();">Calculate</button>
+                <button type="button" class="btn btn-danger" onclick=
+                        "document.getElementById('p-age').value = '';
+                        document.getElementById('p-weight').value = '';
+                        document.getElementById('p-serum').value = '';
+                        document.getElementById('p-clearance').value = '';
+                        document.getElementById('m-sex').checked = false;
+                        document.getElementById('f-sex').checked = false"
+                >Clear</button>
+                <button id="cal-close-button" type="button" class="btn btn-danger" onclick="popup.hideCeatCalcFormPopup();">Close</button>
               </div>
             </div>
           </div>
@@ -378,7 +394,7 @@
                 </div>
                 <br/>
                 <hr/>
-                <button type="button" class="btn btn-danger" onclick="popup.hideAboutPopup();">Close</button>
+                <button id="about-close-button" type="button" class="btn btn-danger" onclick="popup.hideAboutPopup();">Close</button>
               </div>
             </div>
           </div>
