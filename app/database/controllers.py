@@ -21,6 +21,10 @@ class Database:
         """Return the total number of prescribed items."""
         return int(db.session.query(func.sum(PrescribingData.items).label('total_items')).first()[0])
 
+    def get_average_act_cost(self):
+        """Return the average cost of ACT."""
+        return float(round(db.session.query(func.avg(PrescribingData.ACT_cost).label('avg_act_cost')).first()[0], 2))
+
     def get_prescribed_items_per_pct(self):
         """Return the total items per PCT."""
         return db.session.query(func.sum(PrescribingData.items).label('item_sum')).group_by(PrescribingData.PCT).all()
